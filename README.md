@@ -28,7 +28,7 @@ A Stock Market Web Application
 - Delete Account
 - Good responsive UI for clear understanding
 
-## Upcomming features
+## Upcoming features
 
 - Improved UI/Navigation
 - Watch List for inspecting share prices
