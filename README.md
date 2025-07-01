@@ -28,11 +28,16 @@ A Stock Market Web Application
 - Delete Account
 - Good responsive UI for clear understanding
 
+## Upcomming features
+
+- Improved UI/Navigation
+- Watch List for inspecting share prices
+
 ## Tech stack
 
 - **Language:** Python 3, HTML 5, CSS, JavaScript
 - **Web Framework:** Flask
-- **CSS Framework:** Bootstrap 5
+- **Frontend:** Bootstrap 5
 - **Backend:** sqlite3
 
 ## Acknowledgements
