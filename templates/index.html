@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block name %}{{ user_name }}{% endblock %}
+{% block balance %}{{ balance | usd }}{% endblock %}
+
+{% block main %}
+
+{% if alert_message %}
+<div class="alert alert-{{ alert_type }} d-flex justify-content-between align-items-center" role="alert">
+    <span>{{ alert_message }}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}
+
+{% if length == 0 %}
+    <h3 class="display-4 text-center fw-bolder mb-5">Currently you don't have any shares</h3>
+    <p><a href="/buy" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Start buying shares</a></p>
+{% else %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Symbol</th>
+                <th scope="col">Shares</th>
+                <th scope="col">Price</th>
+                <th scope="col">TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(length) %}
+            <tr>
+                <th scope="row">{{ user_stocks[i]["symbol"] }}</th>
+                <td>{{ user_stocks[i]["shares"] }}</td>
+                {% if price[i] - prev_price[i] > 0 %}
+                    <td><span class="text-success fw-bolder">{{ price[i] | usd }} (+{{ '%.2f' | format(price[i] - prev_price[i]) }})</span></td>
+                    <td><span class="text-success fw-bolder">{{ total_price[i]  | usd }} (+{{ '%.2f' | format((user_stocks[i]["shares"] * price[i]) - (user_stocks[i]["shares"] * prev_price[i])) }})</span></td>
+                {% elif price[i] - prev_price[i] == 0 %}
+                    <td><span class="text-secondary fw-bolder">{{ price[i] | usd  }} (+0.0)</span></td>
+                    <td><span class="text-secondary fw-bolder">{{ total_price[i] | usd  }} (+0.0)</span></td>
+                {% else %}
+                    <td><span class="text-danger fw-bolder">{{ price[i] | usd }} ({{ '%.2f' | format(price[i] - prev_price[i]) }})</span></td>
+                    <td><span class="text-danger fw-bolder">{{ total_price[i] | usd }} ({{ '%.2f' | format((user_stocks[i]["shares"] * price[i]) - (user_stocks[i]["shares"] * prev_price[i])) }})</span></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><b></b></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><b>Cash</b></td>
+                <td>{{ cash  | usd }}</td>
+            </tr>
+            <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td><b>TOTAL</b></td>
+                <td>{{ grand_total  | usd }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endif %}
+{% endblock %}

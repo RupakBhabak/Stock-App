@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    {% if alert_message %}
+    <div class="alert alert-primary d-flex justify-content-between align-items-center" role="alert">
+        <span>{{ alert_message }}</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    <h1 class="display-4 text-center fw-bolder mb-5">Log In</h1>
+    
+    <form action="/login" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+        </div>
+        <button class="btn btn-primary mb-5" type="submit">Log In</button>
+    </form>
+    <p><a href="/register" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">New to stock app? Create an account</a></p>
+{% endblock %}

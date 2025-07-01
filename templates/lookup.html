@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Quote
+{% endblock %}
+
+{% block name %}{{ user_name }}{% endblock %}
+{% block balance %}{{ balance | usd }}{% endblock %}
+
+{% block style %}
+<style>
+  #buy {
+    display: inline-block;
+    background: #0abe28;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0px 17px 10px -10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    -webkit-transition: all ease-in-out 300ms;
+    transition: all ease-in-out 300ms;
+  }
+
+  #buy:hover {
+    box-shadow: 0px 37px 20px -20px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translate(0px, -10px) scale(1.2);
+    transform: translate(0px, -10px) scale(1.2);
+  }
+</style>
+{% endblock %}
+
+{% block main %}
+<table class="table table-dark">
+  <tbody>
+    <tr>
+      <th scope="row">Name</th>
+      <td><b>{{ name }}</b></td>
+    </tr>
+    <tr>
+      <th scope="row">Price</th>
+      <td>{{ price | usd }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Symbol</th>
+      <td>{{ symbol }}</td>
+    </tr>
+  </tbody>
+</table>
+<form action="/set_symbol_redirect_buy" method="get">
+  <button name="symbol" value="{{ symbol }}" type="submit" class="btn fw-bold my-5" id="buy">Buy Shares of {{ symbol }}</button>
+</form>
+{% endblock %}

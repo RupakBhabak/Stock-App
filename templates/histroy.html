@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+
+{% block title %}
+History
+{% endblock %}
+
+{% block name %}{{ user_name }}{% endblock %}
+{% block balance %}{{ balance | usd }}{% endblock %}
+
+{% block main %}
+{% if length == 0 %}
+<h1 class="display-4 text-center fw-bolder mb-5">No history found</h1>
+{% else %}
+<h1 class="display-4 text-center fw-bolder mb-5">History</h1>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">Stock</th>
+            <th scope="col">Shares</th>
+            <th scope="col">Price</th>
+            <th scope="col">Total</th>
+            <th scope="col">Time</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in range(length) %}
+        <tr>
+            <th scope="row">{{ hist[i]["stock_name"] }}</th>
+            <td>{{ hist[i]["shares"] }}</td>
+            <td>${{ hist[i]["price"] }}</td>
+            <td>${{ '%.2f' | format(hist[i]["shares"] * hist[i]["price"]) }}</td>
+            <td>{{ hist[i]["time"] }}</td>
+            <td>{{ hist[i]["action"] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

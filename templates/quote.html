@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Quote
+{% endblock %}
+
+{% block name %}{{ user_name }}{% endblock %}
+{% block balance %}{{ balance | usd }}{% endblock %}
+
+
+{% block main %}
+<h1 class="display-4 text-center fw-bolder mb-5">Quote</h1>
+<div class="container">
+    <br />
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <form class="card card-sm" method="post">
+                <div class="card-body row no-gutters align-items-center">
+                    <div class="col-auto">
+                        <i class="fas fa-search h4 text-body"></i>
+                    </div>
+                    <!--end of col-->
+                    <div class="col">
+                        <input name="symbol" class="form-control form-control-lg form-control-borderless" type="search"
+                            placeholder="Enter a Symbol" autofocus>
+                    </div>
+                    <!--end of col-->
+                    <div class="col-auto">
+                        <button class="btn btn-lg btn-success" type="submit">Request</button>
+                    </div>
+                    <!--end of col-->
+                </div>
+            </form>
+        </div>
+        <!--end of col-->
+    </div>
+</div>
+{% endblock %}

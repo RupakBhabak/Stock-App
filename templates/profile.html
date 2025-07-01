@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block name %}{{ user_name }}{% endblock %}
+{% block balance %}{{ balance | usd }}{% endblock %}
+
+{% block style %}
+<style>
+    .gradient-custom {
+        /* fallback for old browsers */
+        background: #f6d365;
+
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: -webkit-linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1));
+
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background: linear-gradient(to right bottom, rgba(246, 211, 101, 1), rgba(253, 160, 133, 1))
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+
+<section class="vh-70" style="background-color: #f4f5f7;">
+    <div class="container py-5 h-70">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-lg-6 mb-4 mb-lg-0">
+                <div class="card mb-3" style="border-radius: .5rem;">
+                    <div class="row g-0">
+                        <div class="col-md-4 gradient-custom text-center text-white"
+                            style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                            <img src="https://cdn-icons-png.flaticon.com/512/6522/6522516.png" alt="Avatar"
+                                class="img-fluid my-5" style="width: 80px;" />
+                            <h5>{{ user_name }}</h5>
+                            <p>User ID: {{ user_id }}</p>
+                            <i class="far fa-edit mb-5"></i>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body p-4">
+                                <h6>Stock Summary</h6>
+                                <hr class="mt-0 mb-4">
+                                <div class="row pt-1">
+                                    <div class="col-6 mb-3">
+                                        <h6>Total Expense (Bought)</h6>
+                                        <p class="text-muted fw-bolder">${{ total_bought }}</p>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6>Total Expense (Sold)</h6>
+                                        <p class="text-muted fw-bolder">${{ total_sold }}</p>
+                                    </div>
+                                    <div class="col-6 mb-3">
+                                        <h6>NET Profit/Loss</h6>
+                                        <p class="text-muted"><span class="text-{{ color }} fw-bolder">${{ '%.2f' |
+                                                format(net) }}</span></p>
+                                    </div>
+                                </div>
+                                <h6>Options</h6>
+                                <hr class="mt-0 mb-4">
+                                <div class="row pt-1">
+                                    <div class="col-4 mb-3">
+                                        <h6><a href="/change_password"
+                                                class="text-decoration-none link-opacity-80-hover">Change
+                                                Password</a></h6>
+                                    </div>
+                                    <div class="col-4 mb-3">
+                                        <h6><a href="/deposit"
+                                                class="text-decoration-none link-opacity-80-hover text-success">Deposit
+                                                Money</a></h6>
+                                    </div>
+                                    <div class="col-4 mb-3">
+                                        <h6><a href="/delete"
+                                                class="text-decoration-none link-opacity-80-hover text-danger">Delete
+                                                Account</a></h6>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-start">
+                                    <a href="#!"><i class="fab fa-facebook-f fa-lg me-3"></i></a>
+                                    <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
+                                    <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Apology
+{% endblock %}
+
+{% block style %}
+<style>
+    .custom-bg {
+        background: linear-gradient(to right, #e2e8f0, #e5e7eb);
+    }
+
+    .custom-btn:hover {
+        background-color: #f3e8ff !important;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .custom-bg {
+            background: linear-gradient(to right, #1f2937, #111827);
+            color: white !important;
+        }
+
+        .custom-btn {
+            background-color: #374151 !important;
+            color: white !important;
+        }
+
+        .custom-btn:hover {
+            background-color: #4b5563 !important;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="custom-bg text-dark rounded">
+    <div class="d-flex align-items-center justify-content-center px-2">
+        <div class="text-center">
+            <h1 class="display-1 fw-bold">{{ code }}</h1>
+            <p class="fs-2 fw-medium mt-4">{{ message }}</p>
+            <a href="{{ back_link }}" id="back" class="btn btn-light fw-semibold rounded-pill px-4 pt-2 pb-2 mb-3 custom-btn">
+                Go Back
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    window.onload = function () {
+        document.getElementById("back").focus();
+    };
+</script>
+{% endblock %}
