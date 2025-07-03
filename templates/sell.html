@@ -12,19 +12,35 @@ Sell
 {% if length == 0 %}
 <h1 class="display-4 text-center fw-bolder mb-5">Buy stocks at first</h1>
 {% else %}
-<h1 class="display-4 text-center fw-bolder mb-5">Sell Stock</h1>
-<form class="form-inline" method="post">
-    <select class="form-select" id="dropdown" name="symbol">
-        <option selected disabled>Choose your stock</option>
-        <!-- <option value="1">Option One</option> -->
-        {% for i in range(length) %}
-        <option value="{{ stock_names[i] }}">{{ stock_names[i] }}</option>
-        {% endfor %}
-    </select>
-    <div class="form-group mx-sm-3 mb-2 mt-5">
-        <input name="stock_no" type="number" class="form-control" placeholder="Enter number of shares">
-    </div>
-    <button type="submit" class="btn btn-primary mb-2">Sell</button>
-</form>
+    <h1 class="display-4 text-center fw-bolder mb-5">Sell Stock</h1>
+    {% if selected_symbol %}
+    <form class="form-inline" method="post">
+        <select class="form-select" id="dropdown" name="symbol">
+            <option selected value="{{ selected_symbol }}">{{ selected_symbol }}</option>
+            {% for i in range(length) %}
+            {% if stock_names[i] != selected_symbol %}
+                <option value="{{ stock_names[i] }}">{{ stock_names[i] }}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        <div class="form-group mx-sm-3 mb-2 mt-5">
+            <input name="stock_no" type="number" class="form-control" placeholder="Enter number of shares" autofocus>
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Sell</button>
+    </form>
+    {% else %}
+    <form class="form-inline" method="post">
+        <select class="form-select" id="dropdown" name="symbol">
+            <option selected disabled>Choose your stock</option>
+            {% for i in range(length) %}
+            <option value="{{ stock_names[i] }}">{{ stock_names[i] }}</option>
+            {% endfor %}
+        </select>
+        <div class="form-group mx-sm-3 mb-2 mt-5">
+            <input name="stock_no" type="number" class="form-control" placeholder="Enter number of shares">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Sell</button>
+    </form>
+    {% endif %}
 {% endif %}
 {% endblock %}

@@ -45,11 +45,11 @@ Profile
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>Total Expense (Bought)</h6>
-                                        <p class="text-muted fw-bolder">${{ total_bought }}</p>
+                                        <p class="text-muted fw-bolder">${{ '%.2f' | format(total_bought) }}</p>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Total Expense (Sold)</h6>
-                                        <p class="text-muted fw-bolder">${{ total_sold }}</p>
+                                        <p class="text-muted fw-bolder">${{ '%.2f' | format(total_sold) }}</p>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>NET Profit/Loss</h6>

@@ -259,7 +259,7 @@ def sell():
             for i in range(length):
                 stock_names.append(stocks[i]["symbol"])
         
-        return render_template("sell.html", length=length, stock_names=stock_names, user_name=db.execute("SELECT username FROM users WHERE id = ?", session["user_id"])[0]["username"], balance=db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"])
+        return render_template("sell.html", length=length, stock_names=stock_names, user_name=db.execute("SELECT username FROM users WHERE id = ?", session["user_id"])[0]["username"], balance=db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"], selected_symbol=session.get("selected_symbol"))
     else:
         stock_name = request.form.get("symbol")
         shares = int(request.form.get("stock_no"))
@@ -462,6 +462,11 @@ def set_symbol_redirect_buy():
     session["selected_symbol"] = selected_symbol
     return redirect("/buy")
 
+@app.route("/set_symbol_redirect_sell")
+def set_symbol_redirect_sell():
+    selected_symbol = request.args.get("symbol")
+    session["selected_symbol"] = selected_symbol
+    return redirect("/sell")
 
 if __name__ == "__main__":
     app.run(debug=True)
