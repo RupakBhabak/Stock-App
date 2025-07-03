@@ -31,7 +31,7 @@ A Stock Market Web Application
 ## Upcoming features
 
 - Improved UI/Navigation
-- Watch List for inspecting share prices
+- Bug Fixes
 
 ## Tech stack
 
