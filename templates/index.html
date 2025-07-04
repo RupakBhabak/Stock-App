@@ -17,12 +17,25 @@ Home
 {% endif %}
 
 {% if length == 0 %}
-<h3 class="display-4 text-center fw-bolder mb-5">Currently you don't have any shares</h3>
+<h3 class="display-4 text-center fw-bolder ">Currently you don't have any shares</h3>
 <p><a href="/buy" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Start
         buying shares</a></p>
 {% else %}
-<table class="table table-striped">
-    <thead>
+
+<h2 class="display-4 text-center fw-bold mb-5">
+{% if hour >= 0 and hour <= 11 %}
+Good Morning, {{ user_name }}
+{% elif hour >= 12 and hour <= 16 %}
+Good Afternoon, {{ user_name }}
+{% elif hour >= 17 and hour <= 20 %}
+Good Evening, {{ user_name }}
+{% else %}
+Welcome, {{ user_name }}
+{% endif %}
+</h2>
+
+<table class="table table-striped border border-black rounded-5">
+    <thead class="table-dark">
         <tr>
             <th scope="col">Symbol</th>
             <th scope="col">Shares</th>

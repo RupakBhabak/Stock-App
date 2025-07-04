@@ -50,6 +50,7 @@ def index():
     grand_total = cash
     alert_message = None
     alert_type = None
+    hour = int(datetime.now().strftime("%H"))
 
     if (length != 0):
         for i in range(length):
@@ -69,7 +70,7 @@ def index():
         session["alert_message"] = None
         session["alert_type"] = None
 
-    return render_template("index.html", length=length, user_stocks=user_stocks, price=price, total_price=total_price, grand_total=grand_total, cash=cash, user_name=db.execute("SELECT username FROM users WHERE id = ?", session["user_id"])[0]["username"], balance=db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"], alert_message=alert_message, alert_type=alert_type, prev_price=prev_price)
+    return render_template("index.html", hour=hour, length=length, user_stocks=user_stocks, price=price, total_price=total_price, grand_total=grand_total, cash=cash, user_name=db.execute("SELECT username FROM users WHERE id = ?", session["user_id"])[0]["username"], balance=db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])[0]["cash"], alert_message=alert_message, alert_type=alert_type, prev_price=prev_price)
 
 
 @app.route("/buy", methods=["GET", "POST"])
