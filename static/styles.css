@@ -25,10 +25,9 @@ body {
     height: 100%;
 }
 
-.default_footer {
+/* .default_footer {
     margin-top: 25%;
-}
-
+} */
 
 body::before {
     content: "";

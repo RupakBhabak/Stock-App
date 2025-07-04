@@ -13,7 +13,7 @@ History
 {% else %}
 <h1 class="display-4 text-center fw-bolder mb-5">History</h1>
 <table class="table">
-    <thead class="thead-light">
+    <thead class="table-dark">
         <tr>
             <th scope="col">Stock</th>
             <th scope="col">Shares</th>
@@ -25,7 +25,11 @@ History
     </thead>
     <tbody>
         {% for i in range(length) %}
-        <tr>
+        {% if hist[i]["action"] == 'buy' %}
+        <tr class="table-success">
+        {% else %}
+        <tr class="table-primary">
+        {% endif %}
             <th scope="row">{{ hist[i]["stock_name"] }}</th>
             <td>{{ hist[i]["shares"] }}</td>
             <td>${{ hist[i]["price"] }}</td>
