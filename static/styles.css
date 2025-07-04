@@ -29,3 +29,8 @@ html, body{
 .default_footer {
     margin-top: 25%;
 }
+
+body {
+    background-color: #f4f6f8;
+    color: #222;
+}

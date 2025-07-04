@@ -26,7 +26,7 @@
 </head>
 
 <body>
-    <nav class="bg-light border navbar navbar-expand-md navbar-light">
+    <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-dark mb-4">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"><span class="red">R</span><span class="yellow">up</span><span
                     class="green">ak</span><span class="blue">'s</span> <span class="blue fw-bold">$tock App</span></a>
@@ -37,15 +37,15 @@
             <div class="collapse navbar-collapse" id="navbar">
                 {% if session["user_id"] %}
                 <ul class="navbar-nav me-auto mt-2">
-                    <li class="nav-item"><a class="nav-link" href="/quote">Quote</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/buy">Buy</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/sell">Sell</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/history">History</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/quote">Quote</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/buy">Buy</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/sell">Sell</a></li>
+                    <li class="nav-item"><a class="nav-link text-light" href="/history">History</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto mt-2">
                     <li class="nav-item mx-5 ">
                         <div class="fs-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
                                 class="bi bi-person" viewBox="0 2 16 16">
                                 <path
                                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z">
@@ -55,7 +55,7 @@
                                 {% block name %} {% endblock %}</a>
                         </div>
                     </li>
-                    <li class="nav-item mx-5 mt-2"><b>Balance: {% block balance %}{% endblock %}</b></li>
+                    <li class="nav-item mx-5 mt-2 text-light"><b>Balance: {% block balance %}{% endblock %}</b></li>
                     <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
                 </ul>
                 {% else %}
@@ -68,7 +68,7 @@
         </div>
     </nav>
 
-    <main class="container py-5 text-center">
+    <main class="container-sm py-5 text-center">
         {% block main %}{% endblock %}
     </main>
 
