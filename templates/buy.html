@@ -12,21 +12,32 @@ Buy
 <h1 class="display-4 text-center fw-bolder mb-5">Buy Stock</h1>
 <form class="form-inline" method="post">
     {% if selected_symbol %}
-        <div class="form-group mx-sm-3 mb-2">
-            <input name="symbol" value="{{ selected_symbol }}" class="form-control form-control-lg form-control-borderless" type="text">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <input name="stock_no" type="number" class="form-control" placeholder="Enter number of shares" autofocus>
+        <div class="form-group row">
+            <label for="colFormLabelLg" class="col-md-2 col-form-label col-form-label-lg my-3">Stock Symbol</label>
+            <div class="col-sm-10 my-4">
+                <input name="symbol" type="text" value="{{ selected_symbol }}" class="form-control form-control-lg"
+                    placeholder="Enter a Symbol">
+            </div>
+            <label for="colFormLabelLg" class="col-md-2 col-form-label col-form-label-lg my-3">Shares</label>
+            <div class="col-sm-10 my-4">
+                <input name="stock_no" type="number" class="form-control form-control-lg"
+                    placeholder="Enter number of shares" autofocus>
+            </div>
         </div>
     {% else %}
-        <div class="form-group mx-sm-3 mb-2">
-            <input name="symbol" class="form-control form-control-lg form-control-borderless" type="text"
-                placeholder="Enter a Symbol" autofocus>
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-            <input name="stock_no" type="number" class="form-control" placeholder="Enter number of shares">
+        <div class="form-group row">
+            <label for="colFormLabelLg" class="col-md-2 col-form-label col-form-label-lg my-3">Stock Symbol</label>
+            <div class="col-sm-10 my-4">
+                <input name="symbol" type="text" class="form-control form-control-lg"
+                    placeholder="Enter a Symbol" autofocus>
+            </div>
+            <label for="colFormLabelLg" class="col-md-2 col-form-label col-form-label-lg my-3">Shares</label>
+            <div class="col-sm-10 my-4">
+                <input name="stock_no" type="number" class="form-control form-control-lg"
+                    placeholder="Enter number of shares">
+            </div>
         </div>
     {% endif %}
-    <button type="submit" class="btn btn-primary mb-2">Buy</button>
+    <button type="submit" class="btn btn-primary btn-lg mb-2">Buy</button>
 </form>
 {% endblock %}

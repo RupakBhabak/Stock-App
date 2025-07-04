@@ -47,33 +47,33 @@ Welcome, {{ user_name }}
     <tbody>
         {% for i in range(length) %}
         <tr>
-            <th scope="row">{{ user_stocks[i]["symbol"] }}</th>
-            <td>{{ user_stocks[i]["shares"] }}</td>
+            <th scope="row"><h5>{{ user_stocks[i]["symbol"] }}</h5></th>
+            <td><h5>{{ user_stocks[i]["shares"] }}</h5></td>
             {% if price[i] - prev_price[i] > 0 %}
-            <td><span class="text-success fw-bolder">{{ price[i] | usd }} (+{{ '%.2f' | format(price[i] - prev_price[i])
-                    }})</span></td>
-            <td><span class="text-success fw-bolder">{{ total_price[i] | usd }} (+{{ '%.2f' |
-                    format((user_stocks[i]["shares"] * price[i]) - (user_stocks[i]["shares"] * prev_price[i]))
-                    }})</span></td>
+            <td><span class="text-success fw-bolder"><h5>{{ price[i] | usd }} (+{{ '%.2f' | format(price[i] - prev_price[i])
+            }})</h5></span></td>
+            <td><span class="text-success fw-bolder"><h5>{{ total_price[i] | usd }} (+{{ '%.2f' |
+                format((user_stocks[i]["shares"] * price[i]) - (user_stocks[i]["shares"] * prev_price[i]))
+                }})</h5></span></td>
             {% elif price[i] - prev_price[i] == 0 %}
-            <td><span class="text-secondary fw-bolder">{{ price[i] | usd }} (+0.0)</span></td>
-            <td><span class="text-secondary fw-bolder">{{ total_price[i] | usd }} (+0.0)</span></td>
+            <td><span class="text-secondary fw-bolder"><h5>{{ price[i] | usd }} (+0.0)</h5></span></td>
+            <td><span class="text-secondary fw-bolder"><h5>{{ total_price[i] | usd }} (+0.0)</h5></span></td>
             {% else %}
-            <td><span class="text-danger fw-bolder">{{ price[i] | usd }} ({{ '%.2f' | format(price[i] - prev_price[i])
-                    }})</span></td>
-            <td><span class="text-danger fw-bolder">{{ total_price[i] | usd }} ({{ '%.2f' |
-                    format((user_stocks[i]["shares"] * price[i]) - (user_stocks[i]["shares"] * prev_price[i]))
-                    }})</span></td>
+            <td><span class="text-danger fw-bolder"><h5>{{ price[i] | usd }} ({{ '%.2f' | format(price[i] - prev_price[i])
+            }})</h5></span></td>
+            <td><span class="text-danger fw-bolder"><h5>{{ total_price[i] | usd }} ({{ '%.2f' |
+                format((user_stocks[i]["shares"] * price[i]) - (user_stocks[i]["shares"] * prev_price[i]))
+                }})</h5></span></td>
             {% endif %}
             <td>
                 <div class="d-flex flex-column justify-content-center flex-md-row gap-3">
                     <form action="/set_symbol_redirect_sell" method="get">
                         <button name="symbol" value="{{ user_stocks[i]['symbol'] }}" type="submit" data-toggle="tooltip" title="Click to sell shares of {{ user_stocks[i]['symbol'] }}"
-                            class="btn btn-sm btn-primary">Sell</button>
+                            class="btn btn-md btn-primary">Sell</button>
                     </form>
                     <form action="/set_symbol_redirect_buy" method="get">
                         <button name="symbol" value="{{ user_stocks[i]['symbol'] }}" type="submit" data-toggle="tooltip" title="Click to buy shares of {{ user_stocks[i]['symbol'] }}"
-                            class="btn btn-sm btn-success">Buy</button>
+                            class="btn btn-md btn-success">Buy</button>
                     </form>
                 </div>
             </td>
@@ -86,15 +86,15 @@ Welcome, {{ user_name }}
     <tr class="table-primary">
         <th scope="row"></th>
         <td></td>
-        <td><b>Cash</b></td>
-        <td><b>{{ cash | usd }}</b></td>
+        <td><b><h4>Cash</h4></b></td>
+        <td><b><h4>{{ cash | usd }}</h4></b></td>
         <td></td>
     </tr>
     <tr class="table-primary">
         <th scope="row"></th>
         <td></td>
-        <td><b>TOTAL</b></td>
-        <td><b>{{ grand_total | usd }}</b></td>
+        <td><b><h4>TOTAL</h4></b></td>
+        <td><b><h4>{{ grand_total | usd }}</h4></b></td>
         <td></td>
     </tr>
 </table>
