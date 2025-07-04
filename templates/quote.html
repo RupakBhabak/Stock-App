@@ -7,6 +7,22 @@ Quote
 {% block name %}{{ user_name }}{% endblock %}
 {% block balance %}{{ balance | usd }}{% endblock %}
 
+{% block style %}
+<style>
+    .dropdown-menu {
+        display: block;
+        max-height: 200px;
+        overflow-y: auto;
+        width: 30%;
+        position: absolute;
+        z-index: 1000;
+    }
+
+    .dropdown-item:hover {
+        background-color: #bbbbbb;
+    }
+</style>
+{% endblock %}
 
 {% block main %}
 <h1 class="display-4 text-center fw-bolder mb-5">Quote</h1>
@@ -21,8 +37,9 @@ Quote
                     </div>
                     <!--end of col-->
                     <div class="col">
-                        <input name="symbol" class="form-control form-control-lg form-control-borderless" type="search"
-                            placeholder="Enter a Symbol" autofocus>
+                        <input name="symbol" id="search-box" class="form-control form-control-lg form-control-borderless" type="search"
+                            placeholder="Type symbol to search i.e. AAPL..." autofocus autocomplete="off">
+                        <ul class="dropdown-menu" id="suggestions"></ul>
                     </div>
                     <!--end of col-->
                     <div class="col-auto">
@@ -35,4 +52,42 @@ Quote
         <!--end of col-->
     </div>
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    const searchBox = document.getElementById("search-box");
+    const suggestionsList = document.getElementById("suggestions");
+
+    searchBox.addEventListener("input", () => {
+      const query = searchBox.value.trim();
+      if (query === "") {
+        suggestionsList.innerHTML = "";
+        suggestionsList.classList.remove("show");
+        return;
+      }
+
+      fetch(`/suggest?q=${query}`)
+        .then(res => res.json())
+        .then(data => {
+          suggestionsList.innerHTML = "";
+          if (data.length > 0) {
+            data.forEach(item => {
+              const li = document.createElement("li");
+              li.className = "dropdown-item";
+              li.textContent = item;
+              li.onclick = () => {
+                searchBox.value = item;
+                suggestionsList.innerHTML = "";
+                suggestionsList.classList.remove("show");
+              };
+              suggestionsList.appendChild(li);
+            });
+            suggestionsList.classList.add("show");
+          } else {
+            suggestionsList.classList.remove("show");
+          }
+        });
+    });
+</script>
 {% endblock %}
