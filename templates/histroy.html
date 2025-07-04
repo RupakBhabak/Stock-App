@@ -31,7 +31,13 @@ History
             <td>${{ hist[i]["price"] }}</td>
             <td>${{ '%.2f' | format(hist[i]["shares"] * hist[i]["price"]) }}</td>
             <td>{{ hist[i]["time"] }}</td>
-            <td>{{ hist[i]["action"] }}</td>
+            <td>
+                {% if hist[i]["action"] == 'buy' %}
+                <span class="text-success">{{ hist[i]["action"] }}</span>
+                {% else %}
+                <span class="text-primary">{{ hist[i]["action"] }}</span>
+                {% endif %}
+            </td>
         </tr>
         {% endfor %}
     </tbody>

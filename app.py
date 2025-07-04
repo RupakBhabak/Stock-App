@@ -1,5 +1,5 @@
 from cs50 import SQL
-from flask import Flask, redirect, render_template, request, session
+from flask import Flask, redirect, render_template, request, session, jsonify
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
@@ -456,11 +456,24 @@ def delete():
             return redirect("/")
 
 
+@app.route("/suggest")
+def suggest():
+    query = request.args.get("q", "").lower()
+    data = []
+
+    with open("all_tickers.txt", "r") as file:
+        for line in file:
+            data.append(line.strip())
+
+    results = [item for item in data if query in item.lower()]
+    return jsonify(results)
+
 @app.route("/set_symbol_redirect_buy")
 def set_symbol_redirect_buy():
     selected_symbol = request.args.get("symbol")
     session["selected_symbol"] = selected_symbol
     return redirect("/buy")
+
 
 @app.route("/set_symbol_redirect_sell")
 def set_symbol_redirect_sell():
