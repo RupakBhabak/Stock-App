@@ -39,6 +39,6 @@ body::before {
     background-image: url('https://static.vecteezy.com/system/resources/previews/001/925/614/non_2x/business-graph-chart-of-stock-market-investment-on-blue-background-vector.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.3;
+    opacity: 0.2;
     z-index: -1;
 }

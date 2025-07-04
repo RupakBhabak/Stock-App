@@ -22,7 +22,7 @@ Home
         buying shares</a></p>
 {% else %}
 
-<h2 class="display-4 text-center fw-bold mb-5">
+<h5 class="display-4 text-center fw-normal mb-5">
 {% if hour >= 0 and hour <= 11 %}
 Good Morning, {{ user_name }}
 {% elif hour >= 12 and hour <= 16 %}
@@ -32,9 +32,9 @@ Good Evening, {{ user_name }}
 {% else %}
 Welcome, {{ user_name }}
 {% endif %}
-</h2>
+</h5>
 
-<table class="table table-striped border border-black rounded-5">
+<table class="table table-striped border border-black">
     <thead class="table-dark">
         <tr>
             <th scope="col">Symbol</th>
@@ -66,35 +66,37 @@ Welcome, {{ user_name }}
                     }})</span></td>
             {% endif %}
             <td>
-                <div class="d-flex flex-column justify-content-center flex-md-row gap-2">
+                <div class="d-flex flex-column justify-content-center flex-md-row gap-3">
                     <form action="/set_symbol_redirect_sell" method="get">
-                        <button name="symbol" value="{{ user_stocks[i]['symbol'] }}" type="submit"
+                        <button name="symbol" value="{{ user_stocks[i]['symbol'] }}" type="submit" data-toggle="tooltip" title="Click to sell shares of {{ user_stocks[i]['symbol'] }}"
                             class="btn btn-sm btn-primary">Sell</button>
                     </form>
                     <form action="/set_symbol_redirect_buy" method="get">
-                        <button name="symbol" value="{{ user_stocks[i]['symbol'] }}" type="submit"
+                        <button name="symbol" value="{{ user_stocks[i]['symbol'] }}" type="submit" data-toggle="tooltip" title="Click to buy shares of {{ user_stocks[i]['symbol'] }}"
                             class="btn btn-sm btn-success">Buy</button>
                     </form>
                 </div>
             </td>
         </tr>
         {% endfor %}
-        <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td><b>Cash</b></td>
-            <td>{{ cash | usd }}</td>
-            <td></td>
-        </tr>
-        <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td><b>TOTAL</b></td>
-            <td>{{ grand_total | usd }}</td>
-            <td></td>
-        </tr>
     </tbody>
 </table>
 
+<table class="table">
+    <tr class="table-primary">
+        <th scope="row"></th>
+        <td></td>
+        <td><b>Cash</b></td>
+        <td><b>{{ cash | usd }}</b></td>
+        <td></td>
+    </tr>
+    <tr class="table-primary">
+        <th scope="row"></th>
+        <td></td>
+        <td><b>TOTAL</b></td>
+        <td><b>{{ grand_total | usd }}</b></td>
+        <td></td>
+    </tr>
+</table>
 {% endif %}
 {% endblock %}
