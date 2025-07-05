@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: your-service-name
+    name: Stock-App
     env: python
     buildCommand: ""
     startCommand: gunicorn app:app
