@@ -483,4 +483,4 @@ def set_symbol_redirect_sell():
     return redirect("/sell")
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0')
