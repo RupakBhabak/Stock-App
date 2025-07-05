@@ -6,6 +6,12 @@ Register
 
 {% block main %}
 
+<div id="fullscreenSpinner"
+    class="d-none position-fixed top-0 start-0 w-100 h-100 bg-white d-flex justify-content-center align-items-center"
+    style="z-index: 9999;">
+    <div class="spinner-border text-primary" role="status"></div>
+</div>
+
 <section class="vh-100">
     <div class="container-fluid">
         <div class="row">
@@ -35,7 +41,7 @@ Register
                         </div>
 
                         <div class="pt-1 mb-4">
-                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg btn-block"
+                            <button data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg btn-block" onsubmit="showSpinner()"
                                 type="submit">Register</button>
                         </div>
                         <p>Already registered? <a href="/login" class="link-primary">Login from here</a></p>
@@ -51,4 +57,12 @@ Register
         </div>
     </div>
 </section>
+{% endblock %}
+
+{% block script %}
+<script>
+    function showSpinner() {
+        document.getElementById("fullscreenSpinner").classList.remove("d-none");
+    }
+</script>
 {% endblock %}
