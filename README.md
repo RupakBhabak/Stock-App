@@ -28,11 +28,6 @@ A Stock Market Web Application
 - Delete Account
 - Good responsive UI for clear understanding
 
-## Upcoming features
-
-- Improved UI/Navigation
-- Bug Fixes
-
 ## Tech stack
 
 - **Language:** Python 3, HTML 5, CSS, JavaScript
