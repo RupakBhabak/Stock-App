@@ -3,6 +3,7 @@ from flask import Flask, redirect, render_template, request, session, jsonify
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import datetime
+import os
 
 from helpers import apology, login_required, lookup, usd, if_already_exists, owns_stock
 
@@ -481,8 +482,6 @@ def set_symbol_redirect_sell():
     selected_symbol = request.args.get("symbol")
     session["selected_symbol"] = selected_symbol
     return redirect("/sell")
-
-import os
 
 port = int(os.environ.get("PORT", 5000))
 
