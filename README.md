@@ -4,7 +4,7 @@ A Stock Market Web Application
 
 ## How to Use
 
-Live Site: [Click Here](https://stock-app-7yg6.onrender.com/)
+🔥Live Site: [Click Here](https://stock-app-7yg6.onrender.com/)
 <!-- <b>NOTE: This Web Application will be hosted soon.</b><br>So for now, to test this Application you will have to
 1. Install [Python 3.12](https://www.python.org/) or latest. You can also follow [this video](https://www.youtube.com/watch?v=NES0LRUFMBE)
 2. Install Flask module using `pip install flask`
