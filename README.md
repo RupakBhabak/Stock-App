@@ -42,5 +42,6 @@ A Stock Market Web Application
 - [Flask](https://flask.palletsprojects.com/) for the web framework
 - [Bootstrap](https://getbootstrap.com/) for the frontend
 - [Sqlite3](https://sqlite.org/) for the backend
+- This site is hosted on [Render](https://render.com/)
 - Icon downloaded from [flaticon.com](https://www.flaticon.com/)
 - Special thanks to my friends/family for testing this project 😊
